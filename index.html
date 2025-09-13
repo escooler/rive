@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Box Animation</title>
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* You can change the background color */
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="rive-canvas"></canvas>
+
+    <script src="https://unpkg.com/@rive-app/canvas"></script>
+
+    <script>
+        new rive.Rive({
+            // This is your specific Rive file
+            src: 'magic_box.riv',
+
+            canvas: document.getElementById('rive-canvas'),
+            autoplay: true,
+            
+            // IMPORTANT: Change 'State Machine 1' if your animation uses a different name!
+            stateMachines: 'State Machine 1', 
+            
+            fit: rive.Fit.cover,
+        });
+    </script>
+
+</body>
+</html>
