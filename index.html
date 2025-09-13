@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Box Animation (Diagnostic)</title>
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+        #rive-canvas {
+            width: 100%;
+            height: 100%;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="rive-canvas"></canvas>
+
+    <script src="https://unpkg.com/@rive-app/canvas"></script>
+
+    <script>
+        const canvas = document.getElementById('rive-canvas');
+
+        const r = new rive.Rive({
+            src: 'magic_box.riv',
+            canvas: canvas,
+            autoplay: true,
+            stateMachines: 'State Machine 1', 
+            
+            layout: new rive.Layout({
+                fit: rive.Fit.contain,      
+                alignment: rive.Alignment.center, 
+            }),
+
+            // This will log information to the browser's developer console
+            onLoad: () => {
+                // Resize the drawing surface to the display size
+                r.resizeDrawingSurfaceToCanvas();
+                console.log('Rive Loaded Successfully.');
+                console.log('Canvas display size:', canvas.clientWidth, 'x', canvas.clientHeight);
+                console.log('Canvas drawing surface size:', canvas.width, 'x', canvas.height);
+            },
+        });
+    </script>
+</body>
+</html>
