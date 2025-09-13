@@ -12,14 +12,12 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000; /* You can change the background color */
+            background-color: #000;
         }
-        canvas {
+        #rive-canvas {
             width: 100%;
             height: 100%;
+            vertical-align: top;
         }
     </style>
 </head>
@@ -30,17 +28,17 @@
     <script src="https://unpkg.com/@rive-app/canvas"></script>
 
     <script>
-        new rive.Rive({
-            // This is your specific Rive file
+        const r = new rive.Rive({
             src: 'magic_box.riv',
-
             canvas: document.getElementById('rive-canvas'),
             autoplay: true,
+            stateMachines: 'State Machine 1', // IMPORTANT: Change if your state machine has a different name
             
-            // IMPORTANT: Change 'State Machine 1' if your animation uses a different name!
-            stateMachines: 'State Machine 1', 
-            
-            fit: rive.Fit.cover,
+            // This layout object fixes scaling and quality issues
+            layout: new rive.Layout({
+                fit: rive.Fit.contain,      // Ensures the whole animation is visible
+                alignment: rive.Alignment.center, // Centers the animation on the screen
+            }),
         });
     </script>
 
